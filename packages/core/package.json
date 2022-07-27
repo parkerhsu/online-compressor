@@ -10,7 +10,8 @@
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
-    "dev": "nest start --watch",
+    "dev": "cross-env RUNNING_ENV=dev nest start --watch",
+    "dev:hot": "cross-env RUNNING_ENV=dev nest build --webpack --webpackPath webpack-hmr.config.js --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
@@ -21,15 +22,23 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@fastify/static": "^6.4.1",
     "@nestjs/common": "^9.0.0",
+    "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/platform-fastify": "^9.0.5",
+    "@nestjs/swagger": "^6.0.4",
+    "cross-env": "^7.0.3",
     "fastify": "^4.3.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.2.0"
+    "run-script-webpack-plugin": "^0.1.1",
+    "rxjs": "^7.2.0",
+    "webpack": "^5.74.0",
+    "webpack-node-externals": "^3.0.0",
+    "yaml": "^2.1.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
