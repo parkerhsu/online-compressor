@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus } from '@nestjs/common'
-import { BUSINESS_ERROR_CODE } from './business.error.codes'
+import { BUSINESS_ERROR_CODE } from './business.errorCodes'
 
 type BusinessError = {
   code: number
