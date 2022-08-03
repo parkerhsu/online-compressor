@@ -1,16 +1,16 @@
-import { FastifyReply, FastifyRequest } from 'fastify'
+import { Request, Response } from 'express'
 import { ExceptionFilter, Catch, ArgumentsHost, HttpStatus, ServiceUnavailableException } from '@nestjs/common'
 
 @Catch()
 export class AllExceptionsFilter implements ExceptionFilter {
   catch(exception: Error, host: ArgumentsHost) {
     const ctx = host.switchToHttp()
-    const response = ctx.getResponse<FastifyReply>()
-    const request = ctx.getRequest<FastifyRequest>()
+    const response = ctx.getResponse<Response>()
+    const request = ctx.getRequest<Request>()
 
-    request.log.error(exception)
+    // request.log.error(exception)
 
-    response.status(HttpStatus.SERVICE_UNAVAILABLE).send({
+    response.status(HttpStatus.SERVICE_UNAVAILABLE).json({
       statusCode: HttpStatus.SERVICE_UNAVAILABLE,
       timestamp: new Date().toISOString(),
       path: request.url,

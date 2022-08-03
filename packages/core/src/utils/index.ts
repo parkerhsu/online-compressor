@@ -3,7 +3,7 @@ import * as path from 'path'
 import * as fs from 'fs'
 
 export const getEnv = () => {
-  return process.env.RUNNING_ENV
+  return process.env.RUNNING_ENV || 'dev'
 }
 
 export const getConfig = () => {

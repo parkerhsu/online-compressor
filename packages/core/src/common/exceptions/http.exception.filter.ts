@@ -1,4 +1,4 @@
-import { FastifyReply, FastifyRequest } from 'fastify'
+import { Request, Response } from 'express'
 import { ExceptionFilter, Catch, ArgumentsHost, HttpException, HttpStatus } from '@nestjs/common'
 import { BusinessException } from './business.exception'
 
@@ -6,13 +6,13 @@ import { BusinessException } from './business.exception'
 export class HttpExceptionsFilter implements ExceptionFilter {
   catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp()
-    const request = ctx.getRequest<FastifyRequest>()
-    const response = ctx.getResponse<FastifyReply>()
+    const request = ctx.getRequest<Request>()
+    const response = ctx.getResponse<Response>()
     const status = exception.getStatus()
 
     if (exception instanceof BusinessException) {
       const error = exception.getResponse()
-      response.status(HttpStatus.OK).send({
+      response.status(HttpStatus.OK).json({
         data: null,
         status: error['code'],
         extra: {},
@@ -22,7 +22,7 @@ export class HttpExceptionsFilter implements ExceptionFilter {
       return
     }
 
-    response.status(status).send({
+    response.status(status).json({
       statusCode: status,
       timestamp: new Date().toISOString(),
       path: request.url,
