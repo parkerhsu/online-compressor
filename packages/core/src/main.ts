@@ -22,6 +22,8 @@ async function bootstrap() {
     methods: 'GET,POST,PUT,DELETE',
   })
 
+  app.setGlobalPrefix('api')
+
   app.useGlobalInterceptors(new TransformInterceptor())
   app.useGlobalFilters(new AllExceptionsFilter(), new HttpExceptionsFilter())
 

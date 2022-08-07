@@ -4,7 +4,6 @@ import Upload from '@/components/Upload'
 function ImageCompress() {
   return (
     <div>
-      Image Compress
       <Upload />
     </div>
   )

@@ -16,8 +16,6 @@ export class BusinessException extends HttpException {
     }
     super(err, HttpStatus.OK)
   }
-  
-  static throwForbidden() {
-    
-  }
+
+  static throwForbidden() {}
 }

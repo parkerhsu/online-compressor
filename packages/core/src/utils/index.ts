@@ -13,3 +13,5 @@ export const getConfig = () => {
   const config = parse(yamlFile)
   return config
 }
+
+export { getUploadStorePath, getCompressedStorePath } from './file'

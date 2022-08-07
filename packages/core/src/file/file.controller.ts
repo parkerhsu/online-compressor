@@ -11,11 +11,14 @@ import {
   Res,
   StreamableFile
 } from '@nestjs/common'
-import { Express, Response } from 'express'
+import { Express, response, Response } from 'express'
 import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express'
 import { createReadStream } from 'fs'
 import { join } from 'path'
 import { diskStorage } from 'multer'
+import { getUploadStorePath, getCompressedStorePath } from '@/utils'
+import { BusinessException } from '@/common/exceptions/business.exception'
+// import * as nuid from 'nuid'
 
 @Controller('file')
 export class FileController {
@@ -24,7 +27,15 @@ export class FileController {
   @Post('upload')
   @UseInterceptors(FileInterceptor('file', {
     storage: diskStorage({
-      destination: './uploadFiles'
+      destination: (req, file, cb) => {
+        const uuid = req.body.uuid
+        if (!uuid) throw new BusinessException("can't get uuid")
+        cb(null, getUploadStorePath(uuid))
+      },
+      filename: (req, file, cb) => {
+        const fileName = `${file.filename}.${file.mimetype.split('/')[1]}`
+        return cb(null, fileName)
+      }
     })
   }))
   uploadFile(
@@ -33,9 +44,10 @@ export class FileController {
         validators: [new MaxFileSizeValidator({ maxSize: 10 * 1024 * 1024 }), /* new FileTypeValidator({ fileType: 'jpg' }) */]
       })
     )
-    file: Express.Multer.File
+    file: Express.Multer.File,
+    @Res() res: Response
   ) {
-    return `${typeof file}`
+    return ''
   }
 
   @Post('upload-multi')
