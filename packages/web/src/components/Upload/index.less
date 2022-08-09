@@ -11,8 +11,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(#fff,#fff) padding-box,repeating-linear-gradient(-45deg,#a8c1e2,#a8c1e2 0.3em,#fff 0,#fff 0.5em);
+    background: linear-gradient(#fff, #fff) padding-box,
+      repeating-linear-gradient(-45deg, #a8c1e2, #a8c1e2 0.3em, #fff 0, #fff 0.5em);
     border: 1px dashed transparent;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .plus-box {
@@ -24,7 +28,7 @@
     height: 60px;
     border: 2px solid #3c71b5;
     border-radius: 10px;
-    opacity: .5;
+    opacity: 0.5;
     .icon {
       color: #3c71b5;
     }
@@ -43,12 +47,72 @@
   }
 
   &:hover {
-    cursor: pointer;
     .upload-inner {
       opacity: 1;
     }
     .plus-box {
       opacity: 1;
+    }
+  }
+
+  .compress-container {
+    background-color: #ddd;
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100px;
+      padding: 0 24px;
+      border-bottom: 1px solid #f1f1f1;
+      color: #3c71b5;
+      
+      .slider-wrapper {
+        width: 300px;
+      }
+    }
+
+    .list-wrapper {
+      .list-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 24px;
+        .file-name {
+          overflow: hidden;
+          width: 200px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .progress {
+          width: 200px;
+        }
+        .finished-info {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 200px;
+          .download-icon {
+            opacity: 0.5;
+            &:hover {
+              opacity: 1;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+
+    .bottom {
+      padding: 24px;
+      text-align: left;
+      .bottom-info {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        color: #3c71b5;
+        font-size: 12px;
+      }
     }
   }
 }
