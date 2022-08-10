@@ -1,0 +1,193 @@
+* {
+  box-sizing: border-box;
+}
+
+.page {
+  position: relative;
+  width: 100vw;
+  height: 56.25vw;
+  overflow: hidden;
+}
+
+.block_1 {
+  height: 56.25vw;
+  background: url(/img/Home2_bg1.png)
+    100% no-repeat;
+  background-size: 100% 100%;
+  width: 100vw;
+}
+
+.block_2 {
+  height: 56.25vw;
+  background: url(/img/Home2_bg2.png)
+    100% no-repeat;
+  background-size: 100% 100%;
+  width: 100vw;
+  padding-top: 5vw;
+  position: relative;
+}
+
+.text-wrapper_1 {
+  width: 24.8vw;
+  height: 6.1vw;
+  margin: 2.81vw 0 0 37.65vw;
+}
+
+.text_1 {
+  width: 24.8vw;
+  height: 6.1vw;
+  overflow-wrap: break-word;
+  color: rgba(0, 0, 0, 1);
+  font-size: 6.51vw;
+  font-family: Adobe Heiti Std R;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 6.52vw;
+}
+
+.text-wrapper_2 {
+  width: 25vw;
+  height: 3.55vw;
+  margin: 3.07vw 0 0 37.86vw;
+}
+
+.text_2 {
+  width: 25vw;
+  height: 3.55vw;
+  overflow-wrap: break-word;
+  color: rgba(0, 0, 0, 1);
+  font-size: 3.9vw;
+  font-family: BookmanOldStyle;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 3.91vw;
+}
+
+.section_1 {
+  display: flex;
+  justify-content: space-around;
+  width: 84.38vw;
+  height: 25.68vw;
+  margin: 0 auto;
+  margin-top: 5vw;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5vw 0;
+  justify-content: space-around;
+  width: 22.82vw;
+  height: 25.68vw;
+  background-size: 18.5vw 21.36vw;
+}
+
+.group_1 {
+  background: url(/img/Home2_card3.png) -0.06vw -0.06vw no-repeat;
+}
+
+.image_1 {
+  width: 5.68vw;
+  height: 5.68vw;
+}
+
+.text_3 {
+  width: 6.67vw;
+  height: 1.62vw;
+  overflow-wrap: break-word;
+  color: rgba(0, 0, 0, 1);
+  font-size: 1.71vw;
+  font-family: Adobe Heiti Std R;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1.72vw;
+  /* margin: 2.81vw 0 0 7.29vw; */
+}
+
+.text_4 {
+  width: 21.15vw;
+  height: 1.46vw;
+  overflow-wrap: break-word;
+  color: rgba(128, 128, 128, 1);
+  font-size: 1.51vw;
+  font-family: Adobe Heiti Std R;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1.52vw;
+  /* margin-top: 3.08vw; */
+}
+
+.group_2 {
+  background: url(/img/Home2_card1.png) -0.06vw -0.06vw
+    no-repeat;
+}
+
+.image_2 {
+  width: 6.05vw;
+  height: 6.05vw;
+  /* margin: 4.73vw 0 0 8.12vw; */
+}
+
+.text_5 {
+  width: 5.89vw;
+  height: 1.62vw;
+  overflow-wrap: break-word;
+  color: rgba(0, 0, 0, 1);
+  font-size: 1.71vw;
+  font-family: Adobe Heiti Std R;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1.72vw;
+  /* margin: 2.7vw 0 0 7.96vw; */
+}
+
+.text_6 {
+  width: 21.15vw;
+  height: 1.46vw;
+  overflow-wrap: break-word;
+  color: rgba(128, 128, 128, 1);
+  font-size: 1.51vw;
+  font-family: Adobe Heiti Std R;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1.52vw;
+  /* margin: 2.81vw 0 6.3vw 0.83vw; */
+}
+
+.group_3 {
+  background: url(/img/Home2_card2.png) -0.06vw -0.06vw
+    no-repeat;
+}
+
+.image_3 {
+  width: 6.05vw;
+  height: 6.05vw;
+  /* margin: 4.73vw 0 0 8.38vw; */
+}
+
+.text_7 {
+  width: 6.36vw;
+  height: 1.57vw;
+  overflow-wrap: break-word;
+  color: rgba(0, 0, 0, 1);
+  font-size: 1.71vw;
+  font-family: Adobe Heiti Std R;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1.72vw;
+  /* margin: 3.02vw 0 0 8.54vw; */
+}
+
+.text_8 {
+  width: 11.78vw;
+  height: 1.46vw;
+  overflow-wrap: break-word;
+  color: rgba(128, 128, 128, 1);
+  font-size: 1.51vw;
+  font-family: Adobe Heiti Std R;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1.52vw;
+  /* margin: 2.55vw 0 6.3vw 5.83vw; */
+}

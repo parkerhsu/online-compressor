@@ -1,0 +1,110 @@
+.page {
+  position: relative;
+  width: 100vw;
+  height: 56.25vw;
+  overflow: hidden;
+}
+
+.group_1 {
+  height: 56.25vw;
+  background: url(/img/Home3_bg.png)
+    100% no-repeat;
+  background-size: 100% 100%;
+  width: 100vw;
+}
+
+.block_1 {
+  position: relative;
+  width: 100vw;
+  height: 56.25vw;
+  background: url(/img/Home3_bg2.png)
+    100% no-repeat;
+  background-size: 100% 100%;
+}
+
+.group_2 {
+  height: 30.27vw;
+  background: url(/img/Home3_card1.png) -0.21vw -0.16vw
+    no-repeat;
+  background-size: 54.06vw 30.62vw;
+  width: 53.65vw;
+  margin: 6.97vw 0 0 3.64vw;
+}
+
+.box_1 {
+  width: 53.49vw;
+  height: 30.11vw;
+  background: url(/img/Home3_card2.png) -0.21vw -0.16vw
+    no-repeat;
+  background-size: 53.9vw 30.46vw;
+  margin: 4.94vw 0 0 1.71vw;
+}
+
+.text-wrapper_1 {
+  width: 29.12vw;
+  height: 26.36vw;
+  margin: 11.3vw 6.4vw 0 7.18vw;
+}
+
+.text_1 {
+  width: 20.37vw;
+  height: 4.95vw;
+  overflow-wrap: break-word;
+  color: rgba(0, 0, 0, 1);
+  font-size: 5.2vw;
+  font-family: DengXian;
+  text-align: left;
+  white-space: nowrap;
+  line-height: 5.21vw;
+  margin-left: 0.16vw;
+}
+
+.text_2 {
+  width: 20.27vw;
+  height: 4.85vw;
+  overflow-wrap: break-word;
+  color: rgba(107, 107, 107, 1);
+  font-size: 5.2vw;
+  font-family: DengXian;
+  text-align: left;
+  white-space: nowrap;
+  line-height: 5.21vw;
+  margin: 3.12vw 0 0 8.85vw;
+}
+
+.text_3 {
+  width: 10.21vw;
+  height: 2.56vw;
+  overflow-wrap: break-word;
+  color: rgba(0, 0, 0, 1);
+  font-size: 2.6vw;
+  font-family: DengXian;
+  text-align: left;
+  white-space: nowrap;
+  line-height: 2.61vw;
+  margin-top: 5.63vw;
+}
+
+.text_4 {
+  width: 20.58vw;
+  height: 2.5vw;
+  overflow-wrap: break-word;
+  color: rgba(107, 107, 107, 1);
+  font-size: 2.6vw;
+  font-family: DengXian;
+  text-align: left;
+  white-space: nowrap;
+  line-height: 2.61vw;
+  margin: 2.76vw 0 0 7.5vw;
+}
+
+.group_3 {
+  position: absolute;
+  left: 7.45vw;
+  top: 16.88vw;
+  width: 53.55vw;
+  height: 30.11vw;
+  background: url(/img/Home3_card3.png) -0.21vw -0.16vw
+    no-repeat;
+  background-size: 53.95vw 30.46vw;
+}
