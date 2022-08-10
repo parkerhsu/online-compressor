@@ -4,13 +4,14 @@ import Progress from '@/components/Progress'
 import type { UploadProps } from 'antd'
 import { PlusOutlined, PlusCircleFilled, ArrowDownOutlined } from '@ant-design/icons'
 import { v4 as uuid } from 'uuid'
+import axios from '@/utils/axios'
 import './index.less'
 
 interface Props {}
 
 type FileItem = {
   key: string
-  file: File
+  file: File,
 }
 
 enum CompressStatus {
@@ -34,17 +35,80 @@ const UploadComponent: React.FC<Props> = (props) => {
     if (!showUploadList) setShowUploadList(true)
 
     let files = e.target.files
-    files = Array.from(files)
+    files = Array.from(files) as Array<File>
     const filesArr = files.map((file: File) => ({
       key: uuid(),
       file
     }))
+    // throttle
+    filesArr.forEach((fileItem: FileItem) => beginUpload(fileItem))
     setFileList([...fileList, ...filesArr])
   }
 
-  function beginCompress() {}
+  async function beginUpload(fileItem: FileItem) {
+    try {
+      const formData = new FormData()
+      formData.append('uuid', fileItem.key)
+      formData.append('file', fileItem.file)
+      formData.append('filename', fileItem.file.name)
 
-  function formatFileSize() {}
+      await axios.post('/api/file/upload', formData)
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  async function beginCompress() {
+    try {
+      setCompressStatus(CompressStatus.COMPRESSING)
+      const keys = fileList.map((item) => item.key)
+      await axios.post('/api/file/compress', { keys })
+      setCompressStatus(CompressStatus.FINISHED)
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  async function handleDownloadFile(key: string) {
+    try {
+      const url = `/api/file/download?key=${key}`
+      const el = document.createElement('a')
+      el.href = url
+      document.body.appendChild(el)
+      el.click()
+      document.body.removeChild(el)
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  async function handleDownloadZip() {
+    try {
+      console.log(`begin download zip`)
+      const form = document.createElement('form')
+      form.style.display = 'none'
+      form.action = '/api/file/download-zip'
+      form.method = 'post'
+      document.body.appendChild(form)
+      const inputEl = document.createElement('input')
+      inputEl.type = 'hidden'
+      inputEl.name = 'keys'
+      inputEl.value = String(fileList.map(item => item.key))
+      form.appendChild(inputEl)
+      form.submit()
+      form.remove()
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  function formatFileSize(size: number) {
+    if (size < 1024 * 100) {
+      return `${(size / 1024).toFixed(1)}KB`
+    } else {
+      return `${(size / (1024 * 1024)).toFixed(2)}MB`
+    }
+  }
 
   function renderFileList() {
     return fileList.map((item) => (
@@ -52,7 +116,7 @@ const UploadComponent: React.FC<Props> = (props) => {
         <div className="file-name">
           <span>{item.file.name}</span>
         </div>
-        <span>1.89MB</span>
+        <span>{formatFileSize(item.file.size)}</span>
         <Progress type={progressType} />
         {compressStatus !== CompressStatus.FINISHED && (
           <span>{compressStatus === CompressStatus.WAIT ? '等待上传' : '处理中'}</span>
@@ -61,7 +125,7 @@ const UploadComponent: React.FC<Props> = (props) => {
           <div className="finished-info">
             <span>684KB</span>
             <span>-64%</span>
-            <ArrowDownOutlined className="download-icon" />
+            <ArrowDownOutlined className="download-icon" onClick={() => handleDownloadFile(item.key)} />
           </div>
         )}
       </div>
@@ -108,6 +172,12 @@ const UploadComponent: React.FC<Props> = (props) => {
               <div className="bottom-info">
                 <span>共 1 个文件，完成压缩 1 个， 1.89 MB → 684 KB，共计压缩 64%</span>
                 <Button>清除队列</Button>
+                {fileList.length > 1 && (
+                  <Button onClick={handleDownloadZip}>
+                    <ArrowDownOutlined />
+                    打包下载{fileList.length}个文件
+                  </Button>
+                )}
               </div>
             )}
           </div>

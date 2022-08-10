@@ -14,4 +14,10 @@ export const getConfig = () => {
   return config
 }
 
-export { getUploadStorePath, getCompressedStorePath } from './file'
+export {
+  getUploadStorePath,
+  getCompressedStorePath,
+  getOriginFilePath,
+  getCompressedFilePath,
+  generateRandomZipPath
+} from './file'
