@@ -41,13 +41,9 @@
 }
 
 .image_1 {
-  vertical-align: middle;
+  /* vertical-align: middle; */
   width: 24.07vw;
   height: 4.43vw;
-}
-
-.nav {
-  margin-top: 1.2vw;
 }
 
 .text_1 {

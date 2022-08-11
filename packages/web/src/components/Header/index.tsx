@@ -10,11 +10,9 @@ export default class Header extends Component {
           src={'/img/logo.png'}
           onClick={this.props.toHome}
         />
-        <div className={`${styles['nav']}`}>
           <a href='#' className={`${styles['text_1']}`}>图片压缩</a>
           <a href='#' className={`${styles['paragraph_1']}`}>GIF压缩</a>
           <a href='#' className={`${styles['paragraph_2']}`}>PDF压缩</a>
-        </div>
       </div>
     )
   }
