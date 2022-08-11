@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { Button, Upload, message, Slider } from 'antd'
 import Progress from '@/components/Progress'
-import type { UploadProps } from 'antd'
 import { PlusOutlined, PlusCircleFilled, ArrowDownOutlined } from '@ant-design/icons'
 import { v4 as uuid } from 'uuid'
 import axios from '@/utils/axios'
@@ -61,8 +60,8 @@ const UploadComponent: React.FC<Props> = (props) => {
   async function beginCompress() {
     try {
       setCompressStatus(CompressStatus.COMPRESSING)
-      const keys = fileList.map((item) => item.key)
-      await axios.post('/api/file/compress', { keys })
+      // const keys = fileList.map((item) => item.key)
+      await axios.post('/api/file/compress', { key: fileList[0].key })
       setCompressStatus(CompressStatus.FINISHED)
     } catch (e) {
       console.error(e)

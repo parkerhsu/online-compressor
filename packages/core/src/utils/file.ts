@@ -29,7 +29,13 @@ export function getCompressedFilePath(uuid: string) {
   return `${dir}/${filename}`
 }
 
-export function getCompressedStorePath(uuid: string) {}
+export function getCompressedStorePath(uuid: string) {
+  const dir = `${STORE_PATH}/${uuid}/compress`
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir)
+  }
+  return dir
+}
 
 export function generateRandomZipPath() {
   const topDir = `${STORE_PATH}/zip`

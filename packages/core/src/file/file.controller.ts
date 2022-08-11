@@ -23,6 +23,8 @@ import { getUploadStorePath, getCompressedStorePath, getCompressedFilePath, getO
 import { BusinessException } from '@/common/exceptions/business.exception'
 import { ConfigService } from '@nestjs/config'
 import * as fs from 'fs'
+import * as stream from 'stream'
+import * as sharp from 'sharp'
 import { FileService } from './file.service'
 
 @Controller('file')
@@ -48,22 +50,35 @@ export class FileController {
   }
 
   @Post('compress')
-  uploadFiles(@Body() body) {
-    const keyArr = body.keys
-    return keyArr.join(',')
+  compress(@Body() body, @Res() res) {
+    const key = body.key
+    let filePath = getOriginFilePath(key)
+    const filename = filePath.split('/').pop()
+    filePath = join(process.cwd(), filePath)
+    const originFileStats = fs.statSync(filePath)
+    let targetFilePath = getCompressedStorePath(key)
+    targetFilePath = join(process.cwd(), `${targetFilePath}/${filename}`)
+    console.log(filePath, targetFilePath)
+    sharp(filePath)
+      .png({ quality: 20 })
+      .toFile(targetFilePath, (err) => {
+        const compressedFileStats = fs.statSync(targetFilePath)
+        res.send({ origin_size: originFileStats.size, compress_size: compressedFileStats.size })
+      })
   }
 
   @Get('download')
-  downloadFile(@Res({ passthrough: true }) res: Response, @Query() query) {
+  downloadFile(@Res() res: Response, @Query() query) {
     const key = query.key
     const filePath = getOriginFilePath(key)
+    // Why return 503 when set this filename to Content-Disposition?
     const filename = filePath.split('/').pop()
-    const file = createReadStream(join(process.cwd(), filePath))
+    const buffer = fs.readFileSync(join(process.cwd(), filePath))
     res.set({
-      'Content-Type': 'application/octet-stream',
-      'Content-Disposition': `attachment; filename=${filename}`
+      'Content-Type': 'image/png',
+      'Content-Disposition': `attachment; filename=compressed.png`
     })
-    return new StreamableFile(file)
+    res.send(buffer)
   }
 
   @Post('download-zip')
@@ -72,8 +87,8 @@ export class FileController {
     const zip = this.fileService.generateZipFile(keys)
     res.set({
       'Content-Type': 'application/zip',
-      'Content-Disposition': `attachment; filename="compressed.zip"`,
-    });
+      'Content-Disposition': `attachment; filename="compressed.zip"`
+    })
     res.send(zip.toBuffer())
   }
 }

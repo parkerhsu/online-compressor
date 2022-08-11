@@ -39,6 +39,7 @@
     "rimraf": "^3.0.2",
     "run-script-webpack-plugin": "^0.1.1",
     "rxjs": "^7.2.0",
+    "sharp": "^0.30.7",
     "webpack": "^5.74.0",
     "webpack-node-externals": "^3.0.0",
     "yaml": "^2.1.1"
