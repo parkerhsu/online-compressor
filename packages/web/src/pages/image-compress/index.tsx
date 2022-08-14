@@ -4,7 +4,7 @@ import Upload from '@/components/Upload'
 function ImageCompress() {
   return (
     <div>
-      <Upload />
+      <Upload type='png' />
     </div>
   )
 }

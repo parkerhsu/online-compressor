@@ -4,6 +4,7 @@
   "singleQuote": true,
   "printWidth": 120,
   "trailingComma": "none",
+  "endOfLine": "auto",
   "overrides": [
     {
       "files": ["*.json5"],

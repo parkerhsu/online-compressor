@@ -17,7 +17,7 @@ import {
 import { Express, response, Response } from 'express'
 import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express'
 import { createReadStream } from 'fs'
-import { join } from 'path'
+import { join, extname } from 'path'
 import { diskStorage } from 'multer'
 import { getUploadStorePath, getCompressedStorePath, getCompressedFilePath, getOriginFilePath } from '@/utils'
 import { BusinessException } from '@/common/exceptions/business.exception'
@@ -36,11 +36,7 @@ export class FileController {
 
   @Post('upload')
   @UseInterceptors(FileInterceptor('file'))
-  async uploadFile(
-    @UploadedFile()
-    file: Express.Multer.File,
-    @Body() body
-  ) {
+  async uploadFile(@UploadedFile() file: Express.Multer.File, @Body() body) {
     const uuid = body.uuid
     const fileType = file.mimetype.split('/')[1]
     const filename = body.filename || `file-${Math.floor(Math.random() * 1e8)}.${fileType}`
@@ -50,21 +46,23 @@ export class FileController {
   }
 
   @Post('compress')
-  compress(@Body() body, @Res() res) {
-    const key = body.key
-    let filePath = getOriginFilePath(key)
-    const filename = filePath.split('/').pop()
-    filePath = join(process.cwd(), filePath)
-    const originFileStats = fs.statSync(filePath)
-    let targetFilePath = getCompressedStorePath(key)
-    targetFilePath = join(process.cwd(), `${targetFilePath}/${filename}`)
-    console.log(filePath, targetFilePath)
-    sharp(filePath)
-      .png({ quality: 20 })
-      .toFile(targetFilePath, (err) => {
-        const compressedFileStats = fs.statSync(targetFilePath)
-        res.send({ origin_size: originFileStats.size, compress_size: compressedFileStats.size })
-      })
+  async compress(@Body() body, @Res() res) {
+    let result
+    try {
+      const key = body.key
+      const quality = body.quality
+      const type = body.type
+      if (type === 'pdf') {
+        result = await this.fileService.compressPdf(key, quality)
+      } else {
+        result = await this.fileService.compressImage(key, quality)
+      }
+    } catch (e) {
+      console.error(e)
+      throw new BusinessException('compress error')
+    }
+
+    res.send(result).end()
   }
 
   @Get('download')
@@ -73,22 +71,33 @@ export class FileController {
     const filePath = getOriginFilePath(key)
     // Why return 503 when set this filename to Content-Disposition?
     const filename = filePath.split('/').pop()
+    const fileType = extname(filename).slice(1)
+    if (!['png', 'jpg'].includes(fileType)) {
+      throw new Error('Error: file type must be png or jpg')
+    }
+
     const buffer = fs.readFileSync(join(process.cwd(), filePath))
     res.set({
-      'Content-Type': 'image/png',
-      'Content-Disposition': `attachment; filename=compressed.png`
+      'Content-Type': `image/${fileType}`,
+      'Content-Disposition': `attachment; filename=compressed.${fileType}`
     })
-    res.send(buffer)
+    res.send(buffer).end()
   }
 
   @Post('download-zip')
   batchDownloadFile(@Res({ passthrough: true }) res: Response, @Body() body) {
     const keys = body.keys
-    const zip = this.fileService.generateZipFile(keys)
+    let zip
+    try {
+      zip = this.fileService.generateZipFile(keys)
+    } catch (e) {
+      throw new Error('Error: generate zip error')
+    }
+
     res.set({
       'Content-Type': 'application/zip',
       'Content-Disposition': `attachment; filename="compressed.zip"`
     })
-    res.send(zip.toBuffer())
+    res.send(zip.toBuffer()).end()
   }
 }

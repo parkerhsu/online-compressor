@@ -74,7 +74,7 @@
     .list-wrapper {
       .list-item {
         display: flex;
-        justify-content: space-between;
+        // justify-content: space-between;
         align-items: center;
         padding: 16px 24px;
         .file-name {
@@ -82,15 +82,22 @@
           width: 200px;
           text-overflow: ellipsis;
           white-space: nowrap;
+          text-align: left;
+          margin-right: 24px;
         }
         .progress {
           width: 200px;
+        }
+        .wait-text {
+          display: inline-block;
+          width: 240px;
+          text-align: right;
         }
         .finished-info {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          width: 200px;
+          width: 240px;
           .download-icon {
             opacity: 0.5;
             &:hover {
@@ -98,6 +105,9 @@
               cursor: pointer;
             }
           }
+        }
+        .ml-48 {
+          margin-left: 48px;
         }
       }
     }
