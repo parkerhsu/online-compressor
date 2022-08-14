@@ -1,19 +1,17 @@
-@keyframes slide {
-  from {
-    background-position-x: 0;
-  }
-  to {
-    background-position-x: 250px;
-  }
+@keyframes progress-bar-stripes {
+  from  { background-position: 40px 0; }
+  to    { background-position: 0 0; }
 }
 
 .progress-bar {
-  height: 5px;
+  height: 8px;
   width: 130px;
-  border-radius: 10px;
-  box-shadow: 0px 10px 13px -6px rgba(44, 62, 80, 1);
-  background-color: #2c3e50;
-  background-image: repeating-linear-gradient(90deg, transparent, transparent 10px, #f1c40f 10px, #f1c40f 20px);
-  animation: slide 4s linear infinite;
-  will-change: background-position;
+  .progress-striped {
+    height: 100%;
+    background-color: #2196F3;
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-size: 40px 40px;
+    animation: progress-bar-stripes .5s linear infinite;
+    border-radius: 10px;
+  }
 }

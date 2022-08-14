@@ -38,14 +38,19 @@ const UploadComponent: React.FC<Props> = ({ type }) => {
 
   function handleUpload(e: any) {
     if (!showUploadList) setShowUploadList(true)
+    const MAX_FILE_COUNT = type === 'pdf' ? 5 : 10
 
     let files = e.target.files
     files = Array.from(files) as Array<File>
-    const filesArr = files.map((file: File) => ({
+    let filesArr = files.map((file: File) => ({
       key: uuid(),
       file,
       status: CompressStatus.WAIT
     }))
+    if (fileList.length === MAX_FILE_COUNT) return
+    else {
+      filesArr = filesArr.slice(0, MAX_FILE_COUNT - fileList.length)
+    }
     // throttle
     filesArr.forEach((fileItem: FileItem) => beginUpload(fileItem))
     setFileList([...fileList, ...filesArr])
@@ -189,9 +194,9 @@ const UploadComponent: React.FC<Props> = ({ type }) => {
 
   function renderTips(type: string) {
     if (type === 'png') {
-      return '（最多上传 30 个文件，单个图片最大为 10 M，支持jpg、png格式）'
+      return '（最多上传 10 个文件，单个图片最大为 10 M，支持jpg、png格式）'
     } else if (type === 'gif') {
-      return '（最多上传 30 个文件，单个图片最大为 10 M，仅支持gif格式）'
+      return '（最多上传 10 个文件，单个图片最大为 10 M，仅支持gif格式）'
     } else if (type === 'pdf') {
       return '最多上传5个文件，单个文件最大为200M'
     }
@@ -271,7 +276,7 @@ const UploadComponent: React.FC<Props> = ({ type }) => {
           <div className="list-wrapper">{renderFileList()}</div>
           <div className="bottom">
             {compressStatus !== CompressStatus.FINISHED ? (
-              <Button onClick={triggerInputClick}>
+              <Button type='primary' onClick={triggerInputClick}>
                 <PlusCircleFilled />
                 继续上传
               </Button>

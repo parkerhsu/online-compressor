@@ -6,13 +6,13 @@ export default class Header extends Component {
     return (
       <div className={`${styles['box_1']} flex-row`}>
         <img className={`${styles['image_1']}`} src={'/img/logo.png'} onClick={this.props.toHome} />
-        <a href="#" className={`${styles['text_1']}`}>
+        <a href="/image-compress" className={`${styles['text_1']}`}>
           图片压缩
         </a>
-        <a href="#" className={`${styles['paragraph_1']}`}>
+        <a href="/gif-compress" className={`${styles['paragraph_1']}`}>
           GIF压缩
         </a>
-        <a href="#" className={`${styles['paragraph_2']}`}>
+        <a href="/pdf-compress" className={`${styles['paragraph_2']}`}>
           PDF压缩
         </a>
       </div>
