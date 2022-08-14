@@ -1,0 +1,51 @@
+.page {
+  position: relative;
+  width: 100vw;
+  height: 56.25vw;
+  overflow: hidden;
+}
+
+.group_1 {
+  width: 100vw;
+  height: 56.25vw;
+  background: url(/img/Home5_bg.png) 100% no-repeat;
+  background-size: 100% 100%;
+}
+
+.text-wrapper_1 {
+  width: 20.37vw;
+  height: 24.02vw;
+  margin: 10.1vw 0 0 4.73vw;
+}
+
+.text_1 {
+  width: 20.37vw;
+  height: 4.9vw;
+  overflow-wrap: break-word;
+  color: rgba(0, 0, 0, 1);
+  font-size: 5.2vw;
+  font-family: DengXian;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 5.21vw;
+}
+
+.paragraph_1 {
+  width: 15.47vw;
+  height: 11.62vw;
+  overflow-wrap: break-word;
+  color: rgba(128, 128, 128, 1);
+  font-size: 2.6vw;
+  font-family: DengXian;
+  text-align: left;
+  line-height: 2.61vw;
+  margin: 7.5vw 0 0 2.08vw;
+}
+
+.section_1 {
+  width: 62.09vw;
+  height: 34.9vw;
+  background: url(/img/Home5_effect.png) -0.21vw -0.16vw no-repeat;
+  background-size: 62.5vw 35.26vw;
+  margin: 8.43vw 6.19vw 0 6.61vw;
+}

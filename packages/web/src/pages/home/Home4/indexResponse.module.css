@@ -1,0 +1,82 @@
+.page {
+  position: relative;
+  width: 100vw;
+  height: 56.25vw;
+  overflow: hidden;
+}
+
+.section_1 {
+  position: relative;
+  width: 100vw;
+  height: 56.25vw;
+  background: url(/img/Home4_bg.png) 100% no-repeat;
+  background-size: 100% 100%;
+}
+
+.paragraph_1 {
+  width: 11.72vw;
+  height: 2.92vw;
+  overflow-wrap: break-word;
+  color: rgba(0, 0, 0, 1);
+  font-size: 3.02vw;
+  font-family: DengXian;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 3.03vw;
+  margin: 1.19vw 0 0 42.65vw;
+}
+
+.text_1 {
+  width: 38.03vw;
+  height: 1.62vw;
+  overflow-wrap: break-word;
+  color: rgba(128, 128, 128, 1);
+  font-size: 1.71vw;
+  font-family: DengXian;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1.72vw;
+  margin: 1.3vw 0 0 29.94vw;
+}
+
+.image_1 {
+  width: 74.38vw;
+  height: 41.83vw;
+  margin: 2.65vw 0 4.73vw 12.81vw;
+}
+
+.text-wrapper_1 {
+  position: absolute;
+  left: 12.77vw;
+  top: 9.43vw;
+  width: 74.48vw;
+  height: 42.87vw;
+  background: url(/img/Home4_mask.png) 100% no-repeat;
+  background-size: 100% 100%;
+}
+
+.text_2 {
+  width: 5.63vw;
+  height: 2.66vw;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 1);
+  font-size: 3.02vw;
+  font-family: DengXian;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 3.03vw;
+  margin: 2.08vw 0 0 3.02vw;
+}
+
+.text_3 {
+  width: 8.96vw;
+  height: 2.87vw;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 1);
+  font-size: 3.02vw;
+  font-family: DengXian;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 3.03vw;
+  margin: 2.18vw 1.45vw 0 55.41vw;
+}

@@ -1,0 +1,132 @@
+.page {
+  position: relative;
+  width: 100vw;
+  height: 56.25vw;
+  overflow: hidden;
+}
+
+.group_1 {
+  height: 56.25vw;
+  background: url(./img/bg1.png) 100% no-repeat;
+  background-size: 100% 100%;
+  width: 100vw;
+}
+
+.section_1 {
+  height: 56.25vw;
+  background: url(./img/bg2.png) -1.78vw -1.41vw no-repeat;
+  background-size: 103.59vw 58.85vw;
+  width: 100vw;
+}
+
+.group_2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+  height: 56.25vw;
+  background: url(./img/bg3.png) -1.78vw -1.41vw no-repeat;
+  background-size: 103.59vw 58.85vw;
+}
+
+.box_1 {
+  display: flex;
+  justify-content: space-around;
+  height: 4.43vw;
+  margin: 0 auto;
+  margin-top: 2vw;
+}
+
+.image_1 {
+  /* vertical-align: middle; */
+  width: 24.07vw;
+  height: 4.43vw;
+}
+
+.text_1 {
+  width: 7.56vw;
+  height: 1.83vw;
+  overflow-wrap: break-word;
+  color: rgba(128, 128, 128, 1);
+  font-size: 1.92vw;
+  font-family: Adobe Heiti Std R;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1.93vw;
+  margin: 1.2vw 0 0 10vw;
+}
+
+.paragraph_1 {
+  width: 6.67vw;
+  height: 1.83vw;
+  overflow-wrap: break-word;
+  color: rgba(128, 128, 128, 1);
+  font-size: 1.92vw;
+  font-family: Adobe Heiti Std R;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1.93vw;
+  margin: 1.3vw 0 0 10.41vw;
+}
+
+.paragraph_2 {
+  width: 7.19vw;
+  height: 1.83vw;
+  overflow-wrap: break-word;
+  color: rgba(128, 128, 128, 1);
+  font-size: 1.92vw;
+  font-family: Adobe Heiti Std R;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1.93vw;
+  margin: 1.3vw 0 0 10.57vw;
+}
+
+.text_2 {
+  width: 60.53vw;
+  height: 9.48vw;
+  overflow-wrap: break-word;
+  color: rgba(0, 0, 0, 1);
+  font-size: 10.41vw;
+  font-family: BookmanOldStyle;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 10.42vw;
+  margin: 0 auto;
+  margin-top: 5vw;
+}
+
+.paragraph_3 {
+  width: 49.22vw;
+  height: 7.09vw;
+  overflow-wrap: break-word;
+  color: rgba(128, 128, 128, 1);
+  font-size: 2.6vw;
+  font-family: Adobe Heiti Std R;
+  text-align: center;
+  line-height: 2.61vw;
+  margin: 7.08vw 0 0 25.41vw;
+}
+
+.image_2 {
+  width: 22.82vw;
+  height: 5.89vw;
+  margin: 7.29vw 0 0 38.33vw;
+}
+
+.image_2:hover {
+  cursor: pointer;
+}
+
+.text_3 {
+  width: 12.24vw;
+  height: 1.41vw;
+  overflow-wrap: break-word;
+  color: rgba(128, 128, 128, 1);
+  font-size: 1.3vw;
+  font-family: Adobe Heiti Std R;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 2.61vw;
+  margin: 5.05vw 0 1.51vw 43.64vw;
+}
