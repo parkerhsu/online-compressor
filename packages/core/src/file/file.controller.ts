@@ -72,7 +72,7 @@ export class FileController {
     // Why return 503 when set this filename to Content-Disposition?
     const filename = filePath.split('/').pop()
     const fileType = extname(filename).slice(1)
-    if (!['png', 'jpg'].includes(fileType)) {
+    if (!['png', 'jpg', 'jpeg', 'gif'].includes(fileType)) {
       throw new Error('Error: file type must be png or jpg')
     }
 
